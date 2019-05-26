@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import NavBar from './components/Navbar'
 import {BrowserRouter,Route} from 'react-router-dom';
 import Home from './components/Home';
-import About from './components/About';
+import CommentsSection from './components/CommentsSection';
 import Contact from './components/Contact';
 class App extends Component {
  
@@ -12,7 +12,7 @@ class App extends Component {
             <div className="todo-App container">
                 <NavBar/>
                 <Route exact path='/' component={Home}/>
-                <Route path='/About' component={About}/>
+                <Route path='/CommentsSection' component={CommentsSection}/>
                 <Route path='/Contact' component={Contact}/>
             </div>
         </BrowserRouter>

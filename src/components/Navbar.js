@@ -7,7 +7,7 @@ const Navbar=()=>   {
             <a href="/"className="brand-Logo">Poke'Time</a>
             <ul className="right">
                 <li><Link to="/">Home</Link></li>
-                <li><NavLink to="/About">About</NavLink></li>
+                <li><NavLink to="/CommentsSection">Comments Section</NavLink></li>
                 <li><NavLink to="/Contact">Contact</NavLink></li>
             </ul>
         </div>
