@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 
 class CommentForm extends Component {
     state = {
-        comment: ''
+        author:'',comment: '',likes:0,commentsOnThisComment:[]
     }
     handleChange=(e)=>  {
             this.setState({ comment:e.target.value });
@@ -12,13 +12,16 @@ class CommentForm extends Component {
     }
     handleSubmit=(e)=> {
         e.preventDefault();
-        this.props.addComment(this.state);
+        if(!this.props.sub){
+            this.props.addComment(this.state);}
+        else{
+            this.props.addSubComment(this.props.masterComment,this.state);
+        }
         this.setState({comment:''});
      } 
             render() { 
             return(   
-            <div lassName="container ">
-                <h4 className="center">Comments</h4>
+            <div className="container ">
                     <form onSubmit={this.handleSubmit} >
                         <label htmlFor="">Comment</label>
                           <textarea name="" id="commentfield" cols="30" rows="10 "onChange={this.handleChange}value = { this.state.comment }></textarea>
