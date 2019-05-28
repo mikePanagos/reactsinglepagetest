@@ -7,55 +7,80 @@ import Comments from './Comments';
  * TODO: commentONAComment
  * TODO Make sure subCOmments work and add correctly
  * 
- *  */ 
+ *  */
 
 
 class CommentsSection extends Component {
     state = {
-        comments:[
+        comments: [
 
         ]
     }
-    addComment=(comment)=>{
-        comment.key=Math.random();
-        let comments =[...this.state.comments,comment];
-        this.setState({comments});
+    addComment = (comment, isSubComment, subComment) => {
+        let comments
+        if (isSubComment) {
+            subComment.key = Math.random();
+            subComment.isSubComment = true;
+            comments = [...this.state.comments];
+            comments.map(com => {
+                if (com.key === comment.key) {
+                    com.commentsOnThisComment = [...com.commentsOnThisComment, subComment];
+                }
+                return com;
+            })
+            comment.show = false;
+        } else {
+            comment.key = Math.random();
+            comment.isSubComment = false;
+            comments = [...this.state.comments, comment];
+        }
+        this.setState({ comments })
+
     }
-    addSubComment=(comment,subcomment)=>{
-        subcomment.key=Math.random();
-        let comments =[...this.state.comments];
-        comments=comments.map(com=>{
-            comment.commentsOnThisComment=(com.key===comment.key)?[...comment.commentsOnThisComment,subcomment]:comment.commentsOnThisComment;
-            return com;
+    like = (comment, sub) => {
+        let comments
+        if (!sub) {
+            comments = [...this.state.comments];
+            for (let i = 0; i < comments.length; i++) {
+
+                if (comment.key === comments[i].key) {
+                    comments[i].likes++;
+                }
+            }
+        } else {
+            comments = [...this.state.comments];
+            for (let i = 0; i < comments.length; i++) {
+                if(comments[i].commentsOnThisComment){
+                for (let j = 0; j < comments[i].commentsOnThisComment.length; j++) {
+                    if (comment.key === comments[i].commentsOnThisComment[j].key) {
+                        comments[i].commentsOnThisComment[j].likes++;
+                    }
+                }}
+            }
+        }
+        this.setState({ comments });
+    }
+    showCommentForm = ({ key }) => {
+        let comments = [...this.state.comments];
+        comments = comments.map(comment => {
+            if (comment.key === key) {
+                comment.show = true;
+            }
+            return comment;
         })
-        console.log(comments);
-        this.setState({comments});
+        this.setState({ comments });
+
     }
-    like= (comment)=>{
-        let comments=[...this.state.comments];
-        comments=comments.map((com)=>{
-            console.log(com.key===comment.key);
-            
-            com.likes=(com.key===comment.key)?com.likes+1:com.likes;
-            return com;
-        });
-        console.log(comments);
-        this.setState({comments});
-    }
-    commentONAComment=()=>{
-        console.log("stuff about to go down");
-        
-    }
-    render(){
+    render() {
         return (
-        <div className="">
-            <h4 className="center">CommentsSection</h4>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam excepturi, voluptatem quasi vitae ipsa magni praesentium quo omnis odit? Fuga, animi! At architecto tempore, ea libero asperiores veritatis vel est!</p>
-            <Comments addSubComment={this.addSubComment} comments={this.state.comments}like={this.like}/>
-            <CommentForm addComment={this.addComment}/>
-        </div>
-        );}
+            <div className="container">
+                <h4 className="center">CommentsSection</h4>
+                <Comments addComment={this.addComment} showCommentForm={this.showCommentForm} like={this.like} comments={this.state.comments} />
+                <CommentForm sub={false} addComment={this.addComment} />
+            </div>
+        );
     }
+}
 
 
 export default CommentsSection;

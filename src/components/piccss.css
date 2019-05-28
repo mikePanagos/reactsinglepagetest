@@ -3,3 +3,13 @@
     width: 80px;
     border-radius: 50%;
 }
+.rowC{display:flex; flex-direction:row;}
+
+.commentsection{
+    background: lightgray;
+    border-radius: 5%;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    
+}
