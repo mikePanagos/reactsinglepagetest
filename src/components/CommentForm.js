@@ -13,15 +13,16 @@ class CommentForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         // console.log(this.props.sub);
-        
-        if (!this.props.sub) {
-            this.props.addComment(this.state, false, null);
-            this.setState({ comment: '' });
-        } else{
-            // console.log(this.props.mainComment);
+        if (!this.state.comment === "") {
+            if (!this.props.sub) {
+                this.props.addComment(this.state, false, null);
+                this.setState({ comment: '' });
+            } else {
+                // console.log(this.props.mainComment);
 
-            this.props.addComment(this.props.mainComment, true, this.state);
-            this.setState({ comment: '' });
+                this.props.addComment(this.props.mainComment, true, this.state);
+                this.setState({ comment: '' });
+            }
         }
     }
     render() {
