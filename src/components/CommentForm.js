@@ -13,7 +13,11 @@ class CommentForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         // console.log(this.props.sub);
-        if (!this.state.comment === "") {
+        console.log(this.state.comment);
+        console.log(this.state.comment !== "");
+        
+        
+        if (!this.state.comment  !== "") {
             if (!this.props.sub) {
                 this.props.addComment(this.state, false, null);
                 this.setState({ comment: '' });
