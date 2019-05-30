@@ -1,5 +1,5 @@
 import React from 'react'
-import pic from "../pics/IMG_1535.JPG"
+import pic from "../../pics/IMG_1535.JPG"
 import './piccss.css';
 import CommentForm from './CommentForm';
 import SubComments from './SubComments';
@@ -13,7 +13,7 @@ const Comments = ({ comments, like, showCommentForm, addComment }) => {
     const comment = comments.map(comment => {
         //get all comments on comments in renderablel shape
         return (
-            <div className="container" key={comment.key}>
+            <div className="card comment" key={comment.key}>
                 <div className="rowC">
                     <img align="middle" className="pic" src={pic} alt="pic" />
                     <div className="commentsection">
@@ -24,11 +24,12 @@ const Comments = ({ comments, like, showCommentForm, addComment }) => {
                 <div className="likeedit container">
                     <label htmlFor="">{(comment.likes !== 0) ? comment.likes : null}</label>
                     <button onClick={() => { like(comment, false) }}>like</button>
+                    <div className="colletions">
                     {(comment.commentsOnThisComment.length > 0) ? <SubComments addComment={addComment} showCommentForm={showCommentForm} like={like} comments={comment.commentsOnThisComment} /> : null}
+                    </div>
                     {(comment.show) ? <CommentForm mainComment={comment} addComment={addComment} sub={true} /> : null}
                     {(!comment.show) ? <button onClick={() => { showCommentForm(comment) }}>respond</button> : null}
                 </div>
-                <hr />
             </div>
         );
     });

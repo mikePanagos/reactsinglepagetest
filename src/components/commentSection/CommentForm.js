@@ -12,9 +12,9 @@ class CommentForm extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(this.props.sub);
-        console.log(this.state.comment);
-        console.log(this.state.comment !== "");
+        //console.log(this.props.sub);
+       //console.log(this.state.comment);
+       //console.log(this.state.comment !== "");
         
         
         if (!this.state.comment  !== "") {
@@ -22,7 +22,7 @@ class CommentForm extends Component {
                 this.props.addComment(this.state, false, null);
                 this.setState({ comment: '' });
             } else {
-                // console.log(this.props.mainComment);
+                //console.log(this.props.mainComment);
 
                 this.props.addComment(this.props.mainComment, true, this.state);
                 this.setState({ comment: '' });
@@ -35,7 +35,7 @@ class CommentForm extends Component {
                 <form onSubmit={this.handleSubmit} >
                     {/* <input type="text"onChange={this.handleChange} value={this.state.comment}/> */}
                     <textarea name="" id="commentfield" cols="30" rows="10 " onChange={this.handleChange} value={this.state.comment}></textarea>
-                    <button>Submit</button>
+                    <button>Comment</button>
                 </form>
             </div>)
     }

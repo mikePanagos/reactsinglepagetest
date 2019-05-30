@@ -12,12 +12,15 @@ import Comments from './Comments';
 
 class CommentsSection extends Component {
     state = {
+        page:this.props.page,
         comments: [
 
         ]
     }
     addComment = (comment, isSubComment, subComment) => {
         let comments
+        
+        
         if (isSubComment) {
             subComment.key = Math.random();
             subComment.isSubComment = true;
@@ -35,7 +38,7 @@ class CommentsSection extends Component {
             comments = [...this.state.comments, comment];
         }
         this.setState({ comments })
-
+        console.log(this.state);
     }
     like = (comment, sub) => {
         let comments
@@ -74,7 +77,6 @@ class CommentsSection extends Component {
     render() {
         return (
             <div className="container">
-                <h4 className="center">CommentsSection</h4>
                 <Comments addComment={this.addComment} showCommentForm={this.showCommentForm} like={this.like} comments={this.state.comments} />
                 <CommentForm sub={false} addComment={this.addComment} />
             </div>

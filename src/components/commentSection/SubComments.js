@@ -1,5 +1,5 @@
 import React from 'react'
-import pic from "../pics/IMG_1535.JPG"
+import pic from "../../pics/IMG_1535.JPG"
 import './piccss.css';
 // import CommentForm from './CommentForm';
 
@@ -16,7 +16,7 @@ const SubComments = ({ comments, like, showCommentForm, addComment }) => {
 
             //get all comments on comments in renderablel shape
             return (
-                <div className="" key={comment.key}>
+                <div className="card comment" key={comment.key}>
                 <div className="rowC">
                     <img align="middle" className="pic" src={pic} alt="pic" />
                     <div className="commentsection">
@@ -30,7 +30,6 @@ const SubComments = ({ comments, like, showCommentForm, addComment }) => {
                         {/* {(!comment.show) ? <button onClick={() => { showCommentForm(comment) }}>comment</button> : null}
                         {(comment.show) ? <CommentForm mainComment={comment} addComment={addComment} sub={true} /> : null} */}
                     </div>
-                    <hr />
                 </div>
             );
         });
