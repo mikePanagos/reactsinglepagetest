@@ -4,6 +4,7 @@ import CommentSection from "./commentSection/CommentsSection";
 import { Link } from 'react-router-dom';
 import PokeBall from '../pokeball.png'
 import {connect} from 'react-redux';
+import Knobs from "./knob";
 
 class Home extends Component {
   // state = {
@@ -40,6 +41,23 @@ class Home extends Component {
     return (
       <div className="container home">
         <h4 className="center">Home</h4>
+        <div className="row m2 s6">
+          <div className="col m6 s12">
+          <Knobs/>
+          </div>
+          <div className="col m6 s12">
+          <Knobs/>
+          </div>
+        </div>
+        <div className="row m2 s6">
+          <div className="col m6 s12">
+          <Knobs/>
+          </div>
+          <div className="col m6 s12">
+          <Knobs/>
+          </div>
+        </div>
+        
         {postList}
         <CommentSection page={"home"} />
       </div>
