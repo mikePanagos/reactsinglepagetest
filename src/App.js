@@ -9,12 +9,13 @@ import Contact from './components/Contact';
 class App extends Component {
 
   render() {
+  
     return (
       <BrowserRouter>
         <div className="todo-App container">
           <NavBar />
           <Switch>
-            <Route exact path='/' component={Home} />
+            <Route exact path='/' component={Home}  />
             <Route path='/about' component={About} />
             <Route path='/Contact' component={Contact} />
             <Route path="/:post_id" component={Post} />
