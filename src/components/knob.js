@@ -23,7 +23,7 @@ class Knobs extends React.Component {
                 <div className="row m1 s4">
                     <Knob min={0} max={127}
                         inputColor="#00FF00"
-                        fgColor="#00FF00"
+                        fgColor="#00FF00"  
                         angleArc={270}
                         angleOffset={225}
                         value={this.state.value}
